@@ -1,13 +1,13 @@
 ---
 template: BlogPost
 path: /hello-world
-published: true
 date: 2021-03-26T18:00:00.332Z
-title: Hello, World
+title: 'Hello, World'
+metaDescription: >-
+  Come può intitolarsi il primo post di un blog su argomenti legati al mondo
+  della programmazione e del machine learning? Beh, ci siamo capiti.
 thumbnail: /assets/hello-world.jpg
-metaDescription: Benvenuti su Program IQ!
 ---
-
 ## Hello
 
 Mi sono più volte chiesto come scrivere il primo di quelli che, spero, saranno una lunga serie di post. La risposta mi è sopraggiunta una notte d'inverno, mentre viaggiavo.
