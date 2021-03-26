@@ -1,5 +1,5 @@
 import React from "react"
-import Navigation from "../navigation"
+import Navigation from "../Navigation"
 import 'prismjs/themes/prism-okaidia.css';
 import Footer from "../Footer";
 import Title from "../Title";
