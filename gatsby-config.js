@@ -4,7 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
 
-module.exports = {
+ module.exports = {
   /* Your site config here */
   siteMetadata: require("./site-meta-data.json"),
   plugins: [
@@ -44,8 +44,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Delog GatbsyJS Starter`,
-        short_name: `Delog`,
+        name: `Program IQ`,
+        short_name: `P-IQ`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#381696`,
@@ -60,5 +60,6 @@ module.exports = {
     // siteURL is a must for sitemap generation
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-offline`,
+    `gatsby-plugin-material-ui`,
   ],
 }
