@@ -30,14 +30,21 @@
         },
         {
           resolve: 'gatsby-remark-emojis',
-        }],
+        },
+        {
+          resolve: `gatsby-remark-katex`,
+          options: {
+            strict: `ignore`
+          }
+        }
+      ],
       },
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         // The property ID; the tracking code won't be generated without it. replace with yours
-        trackingId: "UA-164743872-1",
+        trackingId: "UA-116839405-2",
         head: true,
       }
     },

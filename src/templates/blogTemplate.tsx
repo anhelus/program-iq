@@ -2,6 +2,7 @@ import React from "react"
 import Helmet from 'react-helmet';
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
+import "katex/dist/katex.min.css"
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
