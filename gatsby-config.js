@@ -44,7 +44,7 @@
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         // The property ID; the tracking code won't be generated without it. replace with yours
-        trackingId: "UA-116839405-2",
+        trackingId: "G-MTZE488S9L",
         head: true,
       }
     },
