@@ -2,31 +2,39 @@
 template: BlogPost
 path: /test-react-parte-1
 date: 2021-03-26T18:00:00.332Z
-title: 'Test in React Parte 1: Jest'
+title: 'Test in React - Parte 1: Introduzione a Jest'
 metaDescription: >-
   TODO: Come può intitolarsi il primo post di un blog su argomenti legati al mondo
   della programmazione e del machine learning? Beh, ci siamo capiti.
 thumbnail: /assets/hello-world.jpg
 ---
 
+TODO: intro serie
+
 Jest è stato introdotto da Facebook per il test delle applicazioni JavaScript, con un particolare focus sulle applicazioni React. E' uno dei modi più popolari di testare dei componenti React al giorno d'oggi. Dato che Jest ha a disposizione i suoi test runner, si può semplicemente limitarsi a chiamare Jest da riga di comando ed eseguire tutti i nostri test. Tutti i test sono definiti come test suite (ovvero dei blocchi describe) e dei test cases (ovvero dei blocchi it e test).
 
-Il setup di Jest ci permette di aggiungere una configurazione opzionale, introdurre noi stessi 
+Il setup di Jest ci permette di aggiungere una configurazione opzionale, introdurre noi stessi una routine di setup, o definire degli script npm custom per eseguire i nostri test Jest. Vedremo quindi come fare tutto questo. Oltre a tutto il setup, Jest ha una API ricca per testare le assertion (ovvero true equal to true). Il tutorial ci mostra come usare queste test assertion per i nostri componenti React e le funzioni JavaScript. Inoltre, vedremo come usare lo Snapshot Test per testare i nostri componenti React.
 
-Jest got introduced by Facebook for testing JavaScript and especially React applications. It's one of the most popular ways to test React components nowadays. Since it comes with its own test runner, you can simply call Jest from the command line to run all your tests. All your tests are defined as test suites (e.g. describe-block) and test cases (e.g. it-block or test-block).
+## Creazione dell'app
 
-The Jest setup allows you to add optional configuration, to introduce a setup routine yourself, or to define custom npm scripts to run your Jest tests. In this tutorial, you will learn how to perform all of it. Aside from all the setup, Jest comes with a rich API for test assertions (e.g. true to equal true). The tutorial will show you how to use these test assertions for your React components and JavaScript functions. Also you will learn about Snapshot Tests to test your React components.
+TODO con YARN 
 
-JEST TESTING IN REACT SETUP
-Before implementing the test setup and writing the first React component tests, you will need a simple React application which can be tested in the first place. Start with the src/index.js file where you can import and render the App component which is not implemented yet:
+## Setup
 
+Prima di implementare il setup di test e scrivere i primi test sui componenti React, abbiamo bisogno di una semplice applicazione React che può essere testata in primo luogo. Iniziamo con il file src/index.js dove possiamo importare ed effettuare il rendering del component App che non è ancora implementato:
+
+```ts
 import React from 'react';
 import ReactDOM from 'react-dom';
  
 import App from './App';
  
 ReactDOM.render(<App />, document.getElementById('app'));
-The App component in your src/App.js file will be a React Function Component with React Hooks. It uses axios as third-party library, so make sure to install the node package on the command line with npm install axios for your React application.
+```
+
+Il componente `App` presente all'interno del nostro file `src/App.tsx` sarà, come evidente, un componente funzionale React che sfrutterà sia gli Hooks, sia axios come libreria; assicuriamoci di averla già installata.
+
+```ts
 
 import React from 'react';
 import axios from 'axios';
@@ -96,61 +104,82 @@ export const Counter = ({ counter }) => (
 );
  
 export default App;
-The React application is doing two things:
+```
 
-First, it renders a Counter component which receives props to render a counter property. The counter property is managed as state up in the App component with a useState React Hook. In addition, the counter state can be updated with two buttons by incrementing and decrementing the state.
+Questa applicazione, in pratica, fa due cose:
 
-Second, the App component fetches data from a third-party API when it's rendered for the first time. Here we are using React's useReducer Hook to manage the data state -- which is either the actual data or an error. If there is an error, we render an error message. If there is data, we render the data as a list of items in our React component.
+* per prima cosa, effettua il rendering di un componente, che abbiamo chiamato `Counter`, che visualizza il contatore. Questo contatore è gestito all'interno del componente App; inoltre, può essere aggiornato usando due pulsanti, che servono per incrementare e decrementare il valore del contatore, rispettivamente;
+* secondo, il componente App estrae i dati da una API third-party quando ne viene effettuato il rendering per la prima volta. usiamo l'hook useReducer per gestire lo stato dei dati - che è o i dati veri e prorpi, oppure un errore. Se c'è un errore, si effettua il rendering di un messaggio di errore; se ci sono dati, si effettua il rendering dei dati come una lista di oggetti nel nostro componente React.
 
-Note that we already export our two components and the reducer function from the file to make them testable in our test file(s) later on. This way, every component and the reducer can be tested in isolation -- which makes especially sense for the reducer function to test the state transitions from one to another state. That's what you would call a real unit test: The function is tested with an input and the test asserts an expected output.
+Notiamoc he abbiamo già esportato i nostri due componenti e la funzione reducer dal file per renderli testabili successivamente nei nostri file di test. In questo modo, ogni componente ed il reducer possono essere testati in maniera isolata - il che ha senso specialmente epr la funzione reducer per testare la transizione di stato da uno ad un altro stato. Questo è quello che chiameremmo un vero unit test: la funzione è testata con un input ed i test verifica un output atteso.
 
-In addition, we have a relationship between two React components, because they are parent and child components. That's another scenario which can be tested as integration test. If you would test each component in isolation, you would have unit tests. But by testing them together in their context, for instance rendering the parent component with its child component, you have an integration test for both components.
+Inoltre, abbiamo una relazione tra i due componenti React, perché sono componenti padre e figlio. Questo è un altro scenario che può essere testato mediante un integrationt est. SE vogliamo testare ogni componente in maniera isolata, dovremmo avere degli unit test. Ma testandoli insieme nel loro contesto, per esempio effettuando il rendering del componente padre con il suo componente figlio, abbiamo un test di integrazione per entrambi i componenti.
 
-In order to get our tests up and running, set up Jest by installing it on the command line as development dependencies:
+Per mandare in esecuzione i nostri test, facciamo il setup di Jest (dovrebbe essere già installato di default).
 
-npm install --save-dev jest
-In your package.json file, create a new npm script which runs Jest:
+Se abbiamo usato CRA, siamo già ok, altrimenti dovremo installare e configurare Jest.
 
+## installazione e configurazione di Jest
+
+```sh
+yarn add -D jest
+```
+
+Nel file package.json, creiamo un nuovo script che permetta l'esecuzione di Jest:
+
+```json
 {
-  ...
+  // ...
   "scripts": {
-    "start": "webpack serve --config ./webpack.config.js --mode development",
+    // ...
     "test": "jest"
-  },
-  ...
+  }
 }
-In addition, we want to have more configuration in our tests written with Jest. Hence, pass an additional Jest configuration file to your Jest script:
+```
 
+Possiamo inoltre aggiungere la configuraizone passando un file di configurazione Jest aggiuntivo al nostro script:
+
+```json
 {
-  ...
+  // ...
   "scripts": {
-    "start": "webpack serve --config ./webpack.config.js --mode development",
+    // ...
     "test": "jest --config ./jest.config.json"
-  },
-  ...
+  }
 }
-Next, we can define this optional configuration for Jest in a configuration file. Create it on the command line:
+```
 
-touch jest.config.json
-In this Jest configuration file, add the following test pattern matching to run all the test files which shall be executed by Jest:
+A questo punto, posisamo definire le configurazioni di Jest in un opportuno file di configurazione.
 
+```json
+// jest.config.json
 {
-  "testRegex": "((\\.|/*.)(spec))\\.js?$"
+  "testRegex": "((\\.|/*.)(test|spec))\\.ts?$"
 }
-The testRegex configuration is a regular expression that can be used to specify the naming of the files where your Jest tests will be located. In this case, the files will have the name *spec.js. That's how you can separate them clearly from other files in your src/ folder. Finally, add a test file next to your App component's file in a new src/App.spec.js file. First, create the test file on the command line:
+```
 
-touch src/App.spec.js
-And second, implement your first test case in a test suite in this new file:
+Il parametor testRegex è un'espressione regolare che può essere usato per specificare il nome dei file dove risiederanno i nostri test Jest. In questo caso, i file avranno un nome del tipo *.spec.ts o *.test.ts. Questo è il modo che abbiamo per separarli in maniera chiara dagli altri file nella nostra cartella src/. Infine, aggiungiamo un file di test vicino ai file della App in un nuovo src/App.test.tsx file, all'interno delquale metteremo questo codice:
 
+```ts
+// App.test.tsx
 describe('My Test Suite', () => {
   it('My Test Case', () => {
     expect(true).toEqual(true);
   });
 });
-Now you should be able to run npm test to execute your test suites with your test cases. The test should be green (valid, successful) for your previous test case, but if you change the test to something else, let's say expect(true).toEqual(false);, it should be red (invalid, failed). Congratulations, you have run your first test with Jest!
+```
 
-Last but not least, add another npm script for watching your Jest tests. By using this command, you can have your tests running continuously in one command line tab, while you start your application in another command line tab. Every time you change source code while developing your application, your tests will run again with this watch script.
+Ora dovremmo essere in grado di chiamare la suite di test da riga di comando.
 
+```sh
+yarn test
+```
+
+Noteremo che i test saranno verdi (ovvero *validi*) per questo semplice caso di test, però se proviamo a cambiarlo, diciamo inserendo expect(false).toEqual(true), allora saranno di colore rosso, ad indicare che sono faliti.
+
+Prima di proseguire, aggiungiamo un altro script per abilitare la modalità di *osservazione* dei nostri test. Usando questo comando, potremo fare in modo che i nostri test siano eseguiti in background in una riga di comando, mentre l'applicazione viene esguita su un'altra riga di comando. Ogni volta che cambiamo il codice sorgente mentre sviluppiamo la nostra applicazione, i test saranno eseguiti nuovamente grazie a questo script.
+
+```json
 {
   ...
   "scripts": {
@@ -160,14 +189,17 @@ Last but not least, add another npm script for watching your Jest tests. By usin
   },
   ...
 }
-Now you can run your Jest tests in watch mode. Doing it this way, you would have one open terminal tab for your Jest tests in watch mode with npm run test:watch and one open terminal tab to start your React application with npm start. Every time you change a source file, your tests should run again because of the watch mode.
+```
 
-Exercises:
-Read more about getting started with Jest
-Read more about Jest's Globals
-Read more about Jest's Assertions
-JEST SNAPSHOT TESTING IN REACT
-Jest introduced the so called Snapshot Test. Basically a Snapshot Test creates a snapshot -- which is stored in a separate file -- of your rendered component's output when you run your test. This snapshot is used for diffing it to the next snapshot when you run your test again. If your rendered component's output has changed, the diff of both snapshots will show it and the Snapshot Test will fail. That's not bad at all, because the Snapshot Test should only inform you when the output of your rendered component has changed. In case a Snapshot Test fails, you can either accept the changes or deny them and fix your component's implementation regarding of its rendered output.
+Ora possiamo eseguire i nostri test Jest in watch mode. Facendo in questo modo, avremo un tab aperto per i nostri test Jest in watch mode con yarn test:watch, ed un altro terminale aperto per lanciare la nostra applicazione React mediante yarn start. Ogni volta che cambiamo con file sorgente, i nostri test dovranno essere eseguiti nuovamente a causa del watch mode.
+
+## Jest Snapshot Testing in React (ALTRO ARTICOLO)
+
+Jest ha introdotto il concetto del cosiddetto Snapshot Test. In pratica, uno Snapshot Test crea uno snapshot - che viene memorizzato in un file separato - dell'output restituito dal componente quando eseguiamo il nostro test.
+
+
+
+This snapshot is used for diffing it to the next snapshot when you run your test again. If your rendered component's output has changed, the diff of both snapshots will show it and the Snapshot Test will fail. That's not bad at all, because the Snapshot Test should only inform you when the output of your rendered component has changed. In case a Snapshot Test fails, you can either accept the changes or deny them and fix your component's implementation regarding of its rendered output.
 
 By using Jest for Snapshot Tests, you can keep your tests lightweight, without worrying too much about implementation details of the component. Let's see how these work in React. First, install the react-test-renderer utility library commonly used for Jest to render your actual component in your tests:
 
