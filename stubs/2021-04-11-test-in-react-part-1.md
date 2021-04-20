@@ -9,71 +9,39 @@ metaDescription: >-
 thumbnail: /assets/hello-world.jpg
 ---
 
+# Test in React: la guida definitiva
+
+Ho scritto questa guida principalmente per un motivo, ovvero quello di stabilire una guida comprensiva per quello che riguarda il test di un'applicazione in React (e, di conseguenza, anche React Native). Questo è legato semplicemente ad un fuatto: per quanto abbia cercato in lungo ed in largo, ifatti, non mi è staot possibile trovare una guida che mi permettesse una valutazione esaustiva di questi argomenti.
+
+Partiremo quindi dal
+
 TODO: intro serie
 
-Jest è stato introdotto da Facebook per il test delle applicazioni JavaScript, con un particolare focus sulle applicazioni React. E' uno dei modi più popolari di testare dei componenti React al giorno d'oggi. Dato che Jest ha a disposizione i suoi test runner, si può semplicemente limitarsi a chiamare Jest da riga di comando ed eseguire tutti i nostri test. Tutti i test sono definiti come test suite (ovvero dei blocchi describe) e dei test cases (ovvero dei blocchi it e test).
+## Cosa è Jest?
 
-Il setup di Jest ci permette di aggiungere una configurazione opzionale, introdurre noi stessi una routine di setup, o definire degli script npm custom per eseguire i nostri test Jest. Vedremo quindi come fare tutto questo. Oltre a tutto il setup, Jest ha una API ricca per testare le assertion (ovvero true equal to true). Il tutorial ci mostra come usare queste test assertion per i nostri componenti React e le funzioni JavaScript. Inoltre, vedremo come usare lo Snapshot Test per testare i nostri componenti React.
+Jest è una libreria sviluppata appositamente per testare le applicazioni JavaScript, con particolare focus su quelle scritte in React. Jest è un *test runner*: ciò significa che, invocandolo da riga di comando, potremo eseguire tutti i nostri test in maniera completamente automatizzata.
+
+I test sono normalmente definiti all'interno di una *suite*, definita dall'istruzione `describe`, all'interno della quale ci sono dei *test cases*, definiti grazie a blocchi `it` e `test`.
+
+Jest offre delle API per testare le singole *assertion*: ciò permette, ad esempio, di testare se `true` è uguale a `true` (indizio: è sempre vero). Un'altra interessante possibilità è quella di usare lo snapshot test allo scopo di testare i componenti React.
 
 ## Creazione dell'app
 
-TODO con YARN 
+Allo scopo di questi tutorial, creiamo un'applicazione con React; per farlo, possiamo seguire la procedura standard, usando create-react app, oppure farlo da zero con il modo che abbiamo usato per creare il progetto in React. Vedremo come adattare il nostro progetto ad entrambe le situazioni.
 
 ## Setup
 
-Prima di implementare il setup di test e scrivere i primi test sui componenti React, abbiamo bisogno di una semplice applicazione React che può essere testata in primo luogo. Iniziamo con il file src/index.js dove possiamo importare ed effettuare il rendering del component App che non è ancora implementato:
+Prima di scrivere il primo test sui componenti React, dovremo creare un primo componente! Se abbiamo usato CRA, cancelliamo il contenuto del file `src/App.tsx`, e creiamo al suo posto un semplice componente funzionale.
 
 ```ts
 import React from 'react';
-import ReactDOM from 'react-dom';
- 
-import App from './App';
- 
-ReactDOM.render(<App />, document.getElementById('app'));
-```
-
-Il componente `App` presente all'interno del nostro file `src/App.tsx` sarà, come evidente, un componente funzionale React che sfrutterà sia gli Hooks, sia axios come libreria; assicuriamoci di averla già installata.
-
-```ts
-
-import React from 'react';
-import axios from 'axios';
- 
-export const dataReducer = (state, action) => {
-  if (action.type === 'SET_ERROR') {
-    return { ...state, list: [], error: true };
-  }
- 
-  if (action.type === 'SET_LIST') {
-    return { ...state, list: action.list, error: null };
-  }
- 
-  throw new Error();
-};
- 
-const initialData = {
-  list: [],
-  error: null,
-};
  
 const App = () => {
   const [counter, setCounter] = React.useState(0);
-  const [data, dispatch] = React.useReducer(dataReducer, initialData);
- 
-  React.useEffect(() => {
-    axios
-      .get('http://hn.algolia.com/api/v1/search?query=react')
-      .then(response => {
-        dispatch({ type: 'SET_LIST', list: response.data.hits });
-      })
-      .catch(() => {
-        dispatch({ type: 'SET_ERROR' });
-      });
-  }, []);
  
   return (
     <div>
-      <h1>My Counter</h1>
+      <h1>Contatore</h1>
       <Counter counter={counter} />
  
       <button type="button" onClick={() => setCounter(counter + 1)}>
@@ -83,20 +51,16 @@ const App = () => {
       <button type="button" onClick={() => setCounter(counter - 1)}>
         Decrement
       </button>
- 
-      <h2>My Async Data</h2>
- 
-      {data.error && <div className="error">Error</div>}
- 
-      <ul>
-        {data.list.map(item => (
-          <li key={item.objectID}>{item.title}</li>
-        ))}
-      </ul>
     </div>
   );
 };
- 
+
+export default App;
+```
+
+Creiamo poi un semplice contatore.
+
+```ts
 export const Counter = ({ counter }) => (
   <div>
     <p>{counter}</p>
@@ -106,18 +70,15 @@ export const Counter = ({ counter }) => (
 export default App;
 ```
 
-Questa applicazione, in pratica, fa due cose:
+Questa semplice app effettuato il rendering di un componente, chiamato `Counter`, che visualizza a schermo un contatore il cui valore è gestito come stato all'interno del componente `App`. Il contatore può essere aumentato o diminuito premendo uno dei due pulsanti mostrati a schermo.
 
-* per prima cosa, effettua il rendering di un componente, che abbiamo chiamato `Counter`, che visualizza il contatore. Questo contatore è gestito all'interno del componente App; inoltre, può essere aggiornato usando due pulsanti, che servono per incrementare e decrementare il valore del contatore, rispettivamente;
-* secondo, il componente App estrae i dati da una API third-party quando ne viene effettuato il rendering per la prima volta. usiamo l'hook useReducer per gestire lo stato dei dati - che è o i dati veri e prorpi, oppure un errore. Se c'è un errore, si effettua il rendering di un messaggio di errore; se ci sono dati, si effettua il rendering dei dati come una lista di oggetti nel nostro componente React.
+Notiamo inoltre che entrambi i componenti risiedono in file separati, e che entrambi sono esportati; in questo modo, possono essere testati in maniera indipendente l'uno dall'altro.
 
-Notiamoc he abbiamo già esportato i nostri due componenti e la funzione reducer dal file per renderli testabili successivamente nei nostri file di test. In questo modo, ogni componente ed il reducer possono essere testati in maniera isolata - il che ha senso specialmente epr la funzione reducer per testare la transizione di stato da uno ad un altro stato. Questo è quello che chiameremmo un vero unit test: la funzione è testata con un input ed i test verifica un output atteso.
+Abbiamo inoltre una *relazione* tra i due componenti, in quanto possiamo considerare il componente App come "padre" del componente Counter; in questo scenario, stiamo parlando evidentemente di *integration test*. Il test separato dei componenti è quindi una serie di unit test, ma il test congiunto di entrambi, ad esempio valutando il posizionamento del componente padre all'interno del compoentne figlio, abbiamo un test di integrazione che li riguarda entrambi.
 
-Inoltre, abbiamo una relazione tra i due componenti React, perché sono componenti padre e figlio. Questo è un altro scenario che può essere testato mediante un integrationt est. SE vogliamo testare ogni componente in maniera isolata, dovremmo avere degli unit test. Ma testandoli insieme nel loro contesto, per esempio effettuando il rendering del componente padre con il suo componente figlio, abbiamo un test di integrazione per entrambi i componenti.
+### Setup di Jest
 
-Per mandare in esecuzione i nostri test, facciamo il setup di Jest (dovrebbe essere già installato di default).
-
-Se abbiamo usato CRA, siamo già ok, altrimenti dovremo installare e configurare Jest.
+Dobbiamo adesso fare il setup di Jest per mandare in esecuzione il nostro test. Se abbiamo usato CRA, abbiamo già a disposizione tutto quello che ci serve; nel caso contrario, invece, dovremo installare e configurare Jest.
 
 ## installazione e configurazione di Jest
 

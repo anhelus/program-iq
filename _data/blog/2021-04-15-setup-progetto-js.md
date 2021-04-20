@@ -1,4 +1,21 @@
-Vediamo come efettuare il setup di un progetto JavaScript (ed in particolare React) da zero. Dopo di questo, possiamo continuare avanzando il progetto in una applicazione frontend o backend. Nel caso si decida di andare per una applicazione frontend, faremo il setup nel modo "moderno", non effettuando il linking dei file JavaScript nei file HTML, ma usando un projehct bundler che automatizza questo processo. Qusto è uno dei modi più popolari per iniziare con un progetto JavaScript al giorno d'oggi.
+---
+template: BlogPost
+path: /setup-javascript
+date: 2021-03-26T18:00:00.332Z
+title: 'Il setup di un progetto JavaScript - Parte 1'
+metaDescription: >-
+  TODO: Come può intitolarsi il primo post di un blog su argomenti legati al mondo
+  della programmazione e del machine learning? Beh, ci siamo capiti.
+thumbnail: /assets/hello-world.jpg
+---
+
+# Setup di un progetto JavaScript
+
+In questo post, vedremo come fare il setup di un progetto JavaScript da zero. 
+
+<!-- Vediamo come efettuare il setup di un progetto JavaScript (ed in particolare React) da zero. Dopo di questo, possiamo continuare avanzando il progetto in una applicazione frontend o backend. Nel caso si decida di andare per una applicazione frontend, faremo il setup nel modo "moderno", non effettuando il linking dei file JavaScript nei file HTML, ma usando un projehct bundler che automatizza questo processo. Qusto è uno dei modi più popolari per iniziare con un progetto JavaScript al giorno d'oggi. -->
+
+Nel nostro progetto, ci dovrà essere una cartella per creare la configurazione del progetto, ed ancora più importante il suo codice sorgente. Questa cartella di solito è all'interno di un'altra dove sono tutti i nostri progetti JavaScript.
 
 Iniziamo con la nostra applicazione JavaScript. Per ogni nuovo progetto JavaScrpipt, ci deve essere una cartella per allocare la configurazione del progetto, ma ancora più importante il suo codice sorgente. Questa cartella di solito è in un'altra cartella dove tutti i progetti JavaScript risiedono. Per lanciare il nostro nuovo progetto, creiamo la cartella dello stesso via command line o mediante il nostro file explorer. Ad esempio:
 
