@@ -8,7 +8,10 @@ metaDescription: >-
   della programmazione e del machine learning? Beh, ci siamo capiti.
 thumbnail: /assets/hello-world.jpg
 ---
-## Hello
+
+*Foto di <a href="https://unsplash.com/@ikukevk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kevin Ku</a> - <a href="https://unsplash.com/s/photos/machine-learning?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>.*
+
+# Hello, World
 
 Mi sono più volte chiesto come scrivere il primo di quelli che, spero, saranno una lunga serie di post. La risposta mi è sopraggiunta una notte d'inverno, mentre viaggiavo.
 
@@ -42,7 +45,3 @@ if __name__ == '__main__':
 Problema risolto, dunque? Beh...sì.
 
 Sotto con i post, allora.
-
-### Ringraziamenti
-
-*Immagine di copertina di <a href="https://unsplash.com/@ikukevk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kevin Ku</a> su <a href="https://unsplash.com/s/photos/machine-learning?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>.*
