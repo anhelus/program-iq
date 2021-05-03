@@ -1,6 +1,6 @@
 ---
 template: BlogPost
-path: /hello-world
+path: /ovo
 date: 2021-05-05
 title: 'Hello, World'
 metaDescription: >-

@@ -3,6 +3,7 @@ template: BlogPost
 path: /mixture-experts-intro
 date: 2021-05-03
 title: 'Introduzione alle Mixture of Experts'
+category: machine-learning
 metaDescription: >-
   Esiste un modo per racchiudere in un algoritmo la conoscenza di
   diversi esperti di dominio? Certo! Scopriamo insieme le Mixture of Experts.
