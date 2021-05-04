@@ -3,6 +3,8 @@ template: BlogPost
 path: /ovo
 date: 2021-05-05
 title: 'Hello, World'
+category: machine-learning
+published: false
 metaDescription: >-
   Come può intitolarsi il primo post di un blog su argomenti legati al mondo
   della programmazione e del machine learning? Beh, ci siamo capiti.

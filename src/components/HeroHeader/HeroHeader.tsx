@@ -7,7 +7,7 @@ const HeroHeader = () => {
   React.useEffect(() => {
     const title = document.querySelector('#title');
     init(title, {
-      strings: ['Benvenuto su Program IQ - Sito in costruzione'],
+      strings: ['Benvenuto!'],
       loop: false,
       placeholder: false,
       disableBackTyping: true,

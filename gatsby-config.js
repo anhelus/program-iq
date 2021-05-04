@@ -51,8 +51,8 @@
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Program IQ`,
-        short_name: `P-IQ`,
+        name: `Angelo Cardellicchio`,
+        short_name: `AC`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#381696`,

@@ -13,7 +13,8 @@ const IndexPage = ({
 }) => {
 
   const Posts = edges
-    .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
+    .filter(edge => !!edge.node.frontmatter.date)
+    .filter(edge => edge.node.frontmatter.published)
     .map(edge => <PostLink key={edge.node.id} post={edge.node} />)
 
   return (
@@ -23,7 +24,7 @@ const IndexPage = ({
         <meta name="description" content={site.siteMetadata.description} />
       </Helmet>
       <HeroHeader/>
-      <h2>Blog Posts &darr;</h2>
+      <h2>Blog &darr;</h2>
       <div className="grids">
         {Posts}
       </div>
@@ -50,6 +51,7 @@ export const pageQuery = graphql`
             path
             title
             thumbnail
+            published
           }
         }
       }

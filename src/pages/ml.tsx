@@ -14,7 +14,8 @@ const MachineLearningPage = ({
 
   const Posts = edges
     .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
-	.filter(edge => edge.node.frontmatter.category === 'machine-learning')
+	  .filter(edge => edge.node.frontmatter.category === 'machine-learning')
+    .filter(edge => edge.node.frontmatter.published)
     .map(edge => <PostLink key={edge.node.id} post={edge.node} />)
 
   return (
@@ -23,7 +24,6 @@ const MachineLearningPage = ({
         <title>{site.siteMetadata.title}</title>
         <meta name="description" content={site.siteMetadata.description} />
       </Helmet>
-      <HeroHeader/>
       <h2>Machine Learning &darr;</h2>
       <div className="grids">
         {Posts}
@@ -51,7 +51,8 @@ export const pageQuery = graphql`
             path
             title
             thumbnail
-			category
+            category
+            published
           }
         }
       }

@@ -3,14 +3,13 @@ template: BlogPost
 path: /altro
 date: 2021-03-26T18:00:00.332Z
 title: 'Hello, World'
-category: finance
+category: machine-learning
+published: false
 metaDescription: >-
   Come può intitolarsi il primo post di un blog su argomenti legati al mondo
   della programmazione e del machine learning? Beh, ci siamo capiti.
 thumbnail: /assets/hello-world.jpg
 ---
-
-https://towardsdatascience.com/pipelines-custom-transformers-in-scikit-learn-the-step-by-step-guide-with-python-code-4a7d9b068156
 
 https://towardsdatascience.com/custom-transformers-and-ml-data-pipelines-with-python-20ea2a7adb65
 
