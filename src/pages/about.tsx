@@ -20,8 +20,6 @@ const About = () => {
     `
   )
 
-  console.log('data', data);
-
   return (
     <Layout>
       <Helmet>

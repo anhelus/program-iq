@@ -1,7 +1,7 @@
 ---
 template: BlogPost
-path: /scoperta-etf-p1
-date: 2021-05-07
+path: /etf-p1-introduzione
+date: 2021-05-10
 title: 'Alla scoperta degli ETF'
 category: finance
 published: true

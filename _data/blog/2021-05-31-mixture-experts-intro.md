@@ -8,6 +8,7 @@ metaDescription: >-
   Esiste un modo per racchiudere in un algoritmo la conoscenza di
   diversi esperti di dominio? Certo! Scopriamo insieme le Mixture of Experts.
 thumbnail: /assets/statistics.jpg
+published: false
 ---
 
 *Foto di <a href="https://unsplash.com/@edge2edgemedia?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Edge2Edge Media</a> - <a href="https://unsplash.com/s/photos/statistics?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>*
