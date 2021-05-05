@@ -30,22 +30,29 @@
         },
         {
           resolve: 'gatsby-remark-emojis',
-        }],
+        },
+        {
+          resolve: `gatsby-remark-katex`,
+          options: {
+            strict: `ignore`
+          }
+        }
+      ],
       },
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         // The property ID; the tracking code won't be generated without it. replace with yours
-        trackingId: "UA-164743872-1",
+        trackingId: "G-MTZE488S9L",
         head: true,
       }
     },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Program IQ`,
-        short_name: `P-IQ`,
+        name: `Angelo Cardellicchio`,
+        short_name: `AC`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#381696`,

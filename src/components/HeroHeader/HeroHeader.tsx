@@ -1,5 +1,6 @@
+import { graphql, useStaticQuery } from "gatsby"
+
 import React from "react"
-import { graphql, Link, useStaticQuery } from "gatsby"
 import { init } from 'ityped'
 
 const HeroHeader = () => {
@@ -7,7 +8,7 @@ const HeroHeader = () => {
   React.useEffect(() => {
     const title = document.querySelector('#title');
     init(title, {
-      strings: ['Benvenuto su Program IQ - Sito in costruzione'],
+      strings: ['Benvenuto! Io sono Angelo.'],
       loop: false,
       placeholder: false,
       disableBackTyping: true,
@@ -30,16 +31,9 @@ const HeroHeader = () => {
     `
   )
   return (
-    <div className="hero-header">
-    <div id="title" className="headline" />
-    {/* <div id="title"></div> */}
-    {/* <div 
-      className="primary-content" 
-      dangerouslySetInnerHTML={{ __html: data.site.siteMetadata.home.description}}
-    /> */}
-    {/* <Link to='/contact' className="button -primary">Get in touch &rarr;</Link> */}
-  </div>
-
+	<div className="hero-header">
+    	<div id="title" className="headline" />
+ 	</div>
   )
   }
 

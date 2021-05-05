@@ -1,14 +1,10 @@
-import CTimeline from "../components/timeline/CTimeline";
-import Footer from "../components/Footer";
 import Helmet from 'react-helmet';
-import HeroHeader from '../components/HeroHeader'
 import Layout from "../components/Layout"
 import PostLink from "../components/PostLink"
 import React from "react"
-import SkillBadge from "../components/badges/SkillBadge";
 import { graphql } from 'gatsby'
 
-const IndexPage = ({
+const Blog = ({
   data: {
     site,
     allMarkdownRemark: { edges },
@@ -16,7 +12,7 @@ const IndexPage = ({
 }) => {
 
   const Posts = edges
-    .filter(edge => !!edge.node.frontmatter.date)
+    .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
     .filter(edge => edge.node.frontmatter.published)
     .map(edge => <PostLink key={edge.node.id} post={edge.node} />)
 
@@ -26,19 +22,17 @@ const IndexPage = ({
         <title>{site.siteMetadata.title}</title>
         <meta name="description" content={site.siteMetadata.description} />
       </Helmet>
-      {/* <HeroHeader/> */}
-	  <div style={{textAlign: "center", padding:"5vh 0", lineHeight: "1.5", fontSize: 18}}>
-        <h1>Il mio percorso, in breve...</h1>
-        <CTimeline />
+      <h2>Blog &darr;</h2>
+      <div className="grids">
+        {Posts}
       </div>
-
     </Layout>
   )
 }
 
-export default IndexPage
+export default Blog
 export const pageQuery = graphql`
-  query indexPageQuery {
+  query BlogQuery {
     site {
       siteMetadata {
         title
@@ -55,6 +49,7 @@ export const pageQuery = graphql`
             path
             title
             thumbnail
+      			category
             published
           }
         }
