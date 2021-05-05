@@ -1,11 +1,10 @@
 import Helmet from 'react-helmet';
-import HeroHeader from '../components/HeroHeader'
 import Layout from "../components/Layout"
 import PostLink from "../components/PostLink"
 import React from "react"
 import { graphql } from 'gatsby'
 
-const FinancePage = ({
+const Blog = ({
   data: {
     site,
     allMarkdownRemark: { edges },
@@ -15,7 +14,6 @@ const FinancePage = ({
   const Posts = edges
     .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
     .filter(edge => edge.node.frontmatter.published)
-	  .filter(edge => edge.node.frontmatter.category === 'finance')
     .map(edge => <PostLink key={edge.node.id} post={edge.node} />)
 
   return (
@@ -24,7 +22,7 @@ const FinancePage = ({
         <title>{site.siteMetadata.title}</title>
         <meta name="description" content={site.siteMetadata.description} />
       </Helmet>
-      <h2>Finance &darr;</h2>
+      <h2>Blog &darr;</h2>
       <div className="grids">
         {Posts}
       </div>
@@ -32,9 +30,9 @@ const FinancePage = ({
   )
 }
 
-export default FinancePage
+export default Blog
 export const pageQuery = graphql`
-  query FinancePageQuery {
+  query BlogQuery {
     site {
       siteMetadata {
         title

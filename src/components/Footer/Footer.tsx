@@ -1,18 +1,14 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
-const Footer = ({props}) => {
-
-    // const { t } = props;
+const Footer = () => {
 
     return (
         <footer className="site-footer">
             <p>
-                {/* &copy; {new Date().getFullYear()} RetroPedia &bull; {t("built_with")} <span role="img" aria-label="love">❤️</span> {t("credits")}. */}
+                &copy; {new Date().getFullYear()} Angelo Cardellicchio &bull; Creato con <span role="img" aria-label="love">❤️</span> con <a href="https://www.gatsbyjs.com/">Gatsby</a> e <a href="https://github.com/W3Layouts/gatsby-starter-delog">Delog</a>.
             </p>
         </footer>
     )
 }
 
-// export default translate("Footer")(Footer);
 export default Footer;

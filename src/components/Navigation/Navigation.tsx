@@ -6,9 +6,7 @@ const Navigation = () => {
 
 	return (
 		<nav className="navigation"> 
-			<Link to="/about">Chi sono</Link>
-			<Link to="/ml">Machine Learning</Link>
-			<Link to="/finance">Finanza</Link>
+			<Link to="/blog">Blog</Link>
 			<Link to="/teaching">Didattica</Link>
 			<Link to="/contact">Contattami</Link>
 			<ThemeChanger />

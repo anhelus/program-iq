@@ -1,9 +1,12 @@
-import React from "react"
+import CTimeline from "../components/timeline/CTimeline";
+import Footer from "../components/Footer";
 import Helmet from 'react-helmet';
-import { graphql } from 'gatsby'
+import HeroHeader from '../components/HeroHeader'
 import Layout from "../components/Layout"
 import PostLink from "../components/PostLink"
-import HeroHeader from '../components/HeroHeader'
+import React from "react"
+import SkillBadge from "../components/badges/SkillBadge";
+import { graphql } from 'gatsby'
 
 const IndexPage = ({
   data: {
@@ -23,11 +26,12 @@ const IndexPage = ({
         <title>{site.siteMetadata.title}</title>
         <meta name="description" content={site.siteMetadata.description} />
       </Helmet>
-      <HeroHeader/>
-      <h2>Blog &darr;</h2>
-      <div className="grids">
-        {Posts}
+      {/* <HeroHeader/> */}
+	  <div style={{textAlign: "center", padding:"5vh 0", lineHeight: "1.5", fontSize: 18}}>
+        <h1>Il mio percorso, in breve...</h1>
+        <CTimeline />
       </div>
+
     </Layout>
   )
 }

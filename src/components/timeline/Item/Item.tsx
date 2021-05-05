@@ -1,4 +1,4 @@
-import React from 'react';
+import { ButtonBase, Grow, Paper, Typography } from '@material-ui/core';
 import {
     TimelineConnector,
     TimelineContent,
@@ -7,10 +7,11 @@ import {
     TimelineOppositeContent,
     TimelineSeparator
 } from '@material-ui/lab';
+
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LaptopMacIcon from '@material-ui/icons/LaptopMac';
+import React from 'react';
 import SchoolIcon from '@material-ui/icons/School';
-import { ButtonBase, Grow, Paper, Typography } from '@material-ui/core';
 import useStyles from '../styles';
 
 interface IItemProps {
@@ -25,10 +26,10 @@ const Item: React.FC<IItemProps> = ({year, title, description, link, type}) => {
 
     const classes = useStyles();
 
-    const [descriptionVisible, setDescriptionVisible] = React.useState(false);
+    const [descriptionVisible, setDescriptionVisible] = React.useState(true);
 
     const handleTimelineContentClick = () => {
-        setDescriptionVisible(!descriptionVisible);
+        setDescriptionVisible(descriptionVisible);
     }
 
     const setIcon = (iconType: string) => {

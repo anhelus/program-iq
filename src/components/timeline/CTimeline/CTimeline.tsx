@@ -1,7 +1,7 @@
+import Item from '../Item';
 import React from 'react';
 import { Timeline } from '@material-ui/lab';
 import useStyles from '../styles';
-import Item from '../Item';
 
 const CTimeline = () => {
   const classes = useStyles();
@@ -10,36 +10,30 @@ const CTimeline = () => {
     <Timeline align="alternate">
       <Item 
         year="2014"
-        title="Laurea Magistrale in Ingegneria Informatica"
+        title="Laurea Magistrale"
         description="A luglio del 2014, ho conseguito la laurea in Ingegneria Informatica presso il Politecnico di Bari
-        ottenendo il massimo dei voti. La tesi è stata quella che ha maggiormente influenzato il mio percorso futuro:
-        ho infatti parlato della person re-identification."
+        ottenendo il massimo dei voti."
         type="instruction" />
       <Item 
         year="2014"
-        title="Sviluppatore Android"
-        description="Una descrizione"
+        title="Sviluppatore Mobile"
+        description="Subito dopo la laurea, ho iniziato a lavorare come sviluppatore Android presso SSTlab, laboratorio del Politecnico di Bari."
         type="work" />
       <Item 
         year="2015 - 2018"
         title="Dottorato di Ricerca"
-        description="Una descrizione"
+        description="Un anno dopo la laurea, ho iniziato il mio percorso nel mondo della ricerca, iniziando il Dottorato in Ingegneria Elettrica e dell'Informazione."
         type="instruction" />
       <Item 
         year="2019"
         title="Data Scientist"
-        description="Energy@Work"
+        description="Una volta conseguito il titolo di Dottore di Ricerca, ho lavorato come consulente presso Energy@Work, occupandomi di progetti in ambito energetico."
         type="work" />
       <Item 
         year="2019 - 2021"
-        title="AutoLogS"
-        description="Una descrizione"
+        title="Sviluppatore Mobile"
+        description="Nell'ottobre del 2021, sono tornato ad occuparmi di sviluppo in ambito mobile, questa volta per AutoLogS, spin-off del Politecnico di Bari."
         type="work" />
-      <Item 
-        year="2019 - 2021"
-        title="VULMA"
-        description="Una descrizione"
-        type="project" />
     </Timeline>
   );
 }

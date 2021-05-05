@@ -1,16 +1,24 @@
-import { Typography } from "@material-ui/core";
 import { graphql, useStaticQuery } from "gatsby";
-import React from "react"
+
+import Card from "../components/ui/Card";
 import Helmet from 'react-helmet';
-import SkillBadge from "../components/badges/SkillBadge";
 import Layout from "../components/Layout";
-import CTimeline from "../components/timeline/CTimeline";
+import React from "react"
+
+const courses = [
+	{
+		url: "https://informatica.angelocardellicchio.it",
+		imgUrl: "/assets/computer-vision.jpg",
+		title: "Informatica - Dipartimento di Matematica - UniBa",
+		info: "A.A. 2020/2021"
+	}
+]
 
 const About = () => {
 
   const data = useStaticQuery(
     graphql`
-      query AboutQuery {
+      query TeachingQuery {
         site {
           siteMetadata {
             title
@@ -29,16 +37,18 @@ const About = () => {
         <h1>
           Didattica
         </h1>
-        <div style={{textAlign: "justify"}}>
-            42
-      </div>
-        <h1>Il mio percorso, in breve...</h1>
-        <CTimeline />
-        <h1>Skill</h1>
-        <div style={{display: 'flex', flexDirection: 'row'}}>
-          <SkillBadge title="Python" skill={65} />
-          <SkillBadge title="React" skill={74} />
-        </div>
+		<div className="grids">
+			{
+				courses.map(course => {
+					return <Card 
+						url={course.url}
+						imgUrl={course.imgUrl}
+						title={course.title}
+						info={course.info}
+					/>
+				})
+			}
+		</div>
       </div>
     </Layout>
   )
