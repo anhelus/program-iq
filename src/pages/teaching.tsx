@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby";
 
-import Card from "../components/ui/Card";
+import CourseCard from "../components/ui/CourseCard";
 import Helmet from 'react-helmet';
 import Layout from "../components/Layout";
 import React from "react"
@@ -8,9 +8,11 @@ import React from "react"
 const courses = [
 	{
 		url: "https://informatica.angelocardellicchio.it",
-		imgUrl: "/assets/computer-vision.jpg",
-		title: "Informatica - Dipartimento di Matematica - UniBa",
-		info: "A.A. 2020/2021"
+		imgUrl: "/assets/informatica.jpg",
+    imgCredits: "https://unsplash.com/photos/cYyqhdbJ9TI?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink",
+		title: "Corso di Informatica",
+		location: "Dipartimento di Matematica",
+    datetime: "A.A. 2020/2021"
 	}
 ]
 
@@ -37,18 +39,20 @@ const About = () => {
         <h1>
           Didattica
         </h1>
-		<div className="grids">
-			{
-				courses.map(course => {
-					return <Card 
-						url={course.url}
-						imgUrl={course.imgUrl}
-						title={course.title}
-						info={course.info}
-					/>
-				})
-			}
-		</div>
+        <div className="grids">
+          {
+            courses.map(course => {
+              return <CourseCard 
+                url={course.url}
+                imgUrl={course.imgUrl}
+                imgCredits={course.imgCredits}
+                title={course.title}
+                location={course.location}
+                datetime={course.datetime}
+              />
+            })
+          }
+        </div>
       </div>
     </Layout>
   )

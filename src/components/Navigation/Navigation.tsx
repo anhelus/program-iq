@@ -8,7 +8,7 @@ const Navigation = () => {
 		<nav className="navigation"> 
 			<Link to="/blog">Blog</Link>
 			<Link to="/teaching">Didattica</Link>
-			<Link to="/contact">Contattami</Link>
+			{/* <Link to="/contact">Contattami</Link> */}
 			<ThemeChanger />
 		</nav>  
 	)
