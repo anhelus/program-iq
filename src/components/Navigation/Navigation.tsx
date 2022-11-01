@@ -6,7 +6,7 @@ const Navigation = () => {
 
 	return (
 		<nav className="navigation"> 
-			<Link to="/blog">Blog</Link>
+			{/* <Link to="/blog">Blog</Link> */}
 			<Link to="/teaching">Didattica</Link>
 			{/* <Link to="/contact">Contattami</Link> */}
 			<ThemeChanger />
