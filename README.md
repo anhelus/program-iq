@@ -1,124 +1,149 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8ec719ad-c2f8-4529-b97d-e7561a9eaf33/deploy-status)](https://app.netlify.com/sites/delog-w3layouts/deploys) &nbsp;<a href="https://twitter.com/intent/follow?screen_name=w3layouts">
-  <img src="https://img.shields.io/twitter/follow/w3layouts.svg?label=Follow%20@w3layouts" alt="Follow @w3layouts" />
-</a>
+**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
+`repo_name`, `twitter_handle`, `project_title`, `project_description`
 
-# Delog - Blog for Developer and Designer
-This simple website built with GatsbyJS and Netlify CMS. Deploys on netlify with single click. This Starter is sponsered by [W3Layouts](https://w3layouts.com).
+<!--
+*** Forked by Best-README-Template by Othneil Drew.
+-->
 
-[![Delog - Gatsby Starter Demo](https://w3layouts.com/wp-content/uploads/2020/03/delog.jpg)](https://delog-w3layouts.netlify.com/)
+<!-- PROJECT SHIELDS -->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/W3Layouts/gatsby-starter-delog)
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/anhelus/repo_name">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-Install this starter locally: (assuming you already have [NodeJS and GatsbyJS installed](https://www.gatsbyjs.org/tutorial/part-zero/))
-```bash
-gatsby new gatsby-starter-delog https://github.com/W3Layouts/gatsby-starter-delog
-```
+  <h3 align="center">project_title</h3>
 
-Instructions also available at W3Layouts [Delog Launch Article](https://w3layouts.com/articles/delog-gatsby-starter-netlify-cms/).
+  <p align="center">
+    project_description
+    <br />
+    <a href="https://github.com/anhelus/repo_name"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/anhelus/repo_name">View Demo</a>
+    ·
+    <a href="https://github.com/anhelus/repo_name/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/anhelus/repo_name/issues">Request Feature</a>
+  </p>
+</p>
 
-## Features
-- Built with GatsbyJS and Netlify CMS
-- Option to Add, Edit, Update and Delete posts via Netlify CMS
-- SEO friendly - Option to Add meta description
-- In-built contact form powered by [W3Layouts](https://w3layouts.com) 
-- Comes with dark mode
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
 
----
+  1. [About The Project](#about-the-project)
+  2. [Built With](#built-with)
+  3. [Getting Started](#getting-started)
+      * [Prerequisites](#prerequisites)
+      * [Installation](#installation)
+  4. [Usage](#usage)
+  5. [Roadmap](#roadmap)
+  6. [Contributing](#contributing)
+  7. [License](#license)
+  8. [Contact](#contact)
+  9. [Acknowledgements](#acknowledgements)
 
-## Documentation
+</details>
 
-* Once you hit "[Deploy to Netlify](https://app.netlify.com/start/deploy?repository=https://github.com/W3Layouts/gatsby-starter-delog)"
-* Connect Github
-* Enter Repository Name
-* And your site starts build process. After the build process your website is live
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-### Changing repositary URL for Netlify CMS access
-You need to change repo URL to your own `repo` at `/static/admin/config.yml`, for example `username/repo-name`
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-### Creating Github OAuth Client ID
-* Goto Github [Developer Settings](https://github.com/settings/developers)
-* **New OAuth** 
-* Enter Application name
-* Homepage URL as Netlify URL
-* And **Authorization callback URL** to `https://api.netlify.com/auth/done`)
-* Once Client ID and Secret token is generated configure same in [Netlify Access Control](#accessing-netlify-cms-admin) as described.
+Here's a blank template to get started:
 
-### Accessing Netlify CMS Admin
-* Goto your Netlify site admin
-* Goto **Access Control** > **OAuth** then **Install Provider** you need to select provider as `Github` as add `Client ID` and `Secret` 
-* Your Netlify CMS is ready. Goto you netlify site URL and append `/admin/`. for example `example.netlify.com/admin/`, You will see login with Github button.
+### Built With
 
-### Managing Blog Posts in Netlify CMS
-* Once logged in you will find all the blog post listed here.
-* You can create, edit, update and delete like any CMS
+* []()
+* []()
+* []()
 
-### Editing Meta Data
-Inside you Netlify CMS admin, `Settings > Config` or you can go to `site-meta-data.json`. Here you can edit following details
-* Title
-* Description
-* Site URL
-* Homepage Title
-* Homepage Description
-* To get the Contact form working. you need too add a form at [W3Layouts forms](https://my.w3layouts.com/Forms/). Follow the steps [How to enable W3Layouts Contact form](https://w3layouts.com/articles/introducing-contact-forms-for-static-websites/) instructions to create a form then your contact form is all set.
+<!-- GETTING STARTED -->
+## Getting Started
 
-### Add Google Analytics
-Change `trackingId` in `gatsby-config.js` at `gatsby-plugin-google-analytics` plugin
+To get a local copy up and running follow these simple steps.
 
----
+### Prerequisites
 
-I hope you will build a great website with Delog. If you like it please spread the word, Feel free to contribute and raise a pull request :)
+This is an example of how to list things you need to use the software and how to install them.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-For issues,feedback on enhancement or sharing your new awesome website built with delog. [Create New Issue](https://github.com/W3Layouts/gatsby-starter-delog/issues/new) Here
+### Installation
 
----
+1. Clone the repo
+   ```sh
+   git clone https://github.com/anhelus/repo_name.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
 
+<!-- USAGE EXAMPLES -->
+## Usage
+
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+
+_For more examples, please refer to the [Documentation](https://example.com)_
+
+<!-- ROADMAP -->
 ## Roadmap
-We are maintaining future task in [Github Project](https://github.com/W3Layouts/gatsby-starter-delog/projects/1), even though most changes are instantaious. We try keep them posted here.
 
----
+See the [open issues](https://github.com/anhelus/repo_name/issues) for a list of proposed features (and known issues).
 
-## Credits
-- Awesome image used in demo is from [Unsplash](https://unsplash.com)
-- CSS and SVG Icons by [CSS.gg](https://css.gg)
+<!-- CONTRIBUTING -->
+## Contributing
 
----
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-## Changelog
-All notable changes to this project are listed here.
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### [1.6.0] - 2020-05-03
-#### Added
-- Custom 404 page.
-- Site name will be appended in blog posts and contact page.
-- Reordering fields in Netlify CMS for better flow of post creation.
-- Validation for path in Netlify CMS
+<!-- LICENSE -->
+## License
 
-### [1.5.0] - 2020-05-03
-#### Added
-- Settings page in Netlify CMS to customize site meta data.
-- Site meta data is pulled from `site-meta-data.json`. maintained via Netlify CMS
+Distributed under the MIT License. See `LICENSE` for more information.
 
-### [1.4.0] - 2020-05-01
-#### Added
-- `gatsby-plugin-sitemap` Creates a sitemap for your Gatsby site in production.
+<!-- CONTACT -->
+## Contact
 
-#### Changed
-- Changelog improvements
-- Comments on `gatsby-config.js`
-- Comments on `static/admin/config.yml`
+Angelo Cardellicchio - [mailto](mailto:me@angelocardellicchio.it)
 
-### [1.3.0] - 2020-04-30
-#### Added
-- `gatsby-plugin-offline` drop-in support for making a GatsbyJS site work offline and more resistant to bad network connections.
-- `gatsby-plugin-manifest` configures GatsbyJS to create a manifest.webmanifest file on every site build
+Project Link: [https://github.com/anhelus/repo_name](https://github.com/anhelus/repo_name)
 
-### [1.2.0] - 2020-04-28
-#### Added 
-- GatsbyJS Increment builds with Netlify deployment
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements
 
-### [1.1.0] - 2020-04-21
-#### Added 
-- Dark mode compatibitly and toggle for user preference
+* []()
+* []()
+* []()
 
-### [1.0.0] - 2020-03-14
-- Launch of GatsbyJS and Netlify CMS based starter `gatsby-starter-delog`
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/anhelus/repo.svg?style=for-the-badge
+[contributors-url]: https://github.com/anhelus/repo/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/anhelus/repo.svg?style=for-the-badge
+[forks-url]: https://github.com/anhelus/repo/network/members
+[stars-shield]: https://img.shields.io/github/stars/anhelus/repo.svg?style=for-the-badge
+[stars-url]: https://github.com/anhelus/repo/stargazers
+[issues-shield]: https://img.shields.io/github/issues/anhelus/repo.svg?style=for-the-badge
+[issues-url]: https://github.com/anhelus/repo/issues
+[license-shield]: https://img.shields.io/github/license/anhelus/repo.svg?style=for-the-badge
+[license-url]: https://github.com/anhelus/repo/blob/master/LICENSE.md
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/angelocardellicchio
