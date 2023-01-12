@@ -28,7 +28,7 @@ const IndexPage = ({
       </Helmet>
       {/* <HeroHeader/> */}
 	  <div style={{textAlign: "center", padding:"5vh 0", lineHeight: "1.5", fontSize: 18}}>
-        <h1>Il mio percorso, in breve...</h1>
+        <h1>Il mio percorso</h1>
         <CTimeline />
       </div>
 

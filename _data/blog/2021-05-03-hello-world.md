@@ -1,13 +1,13 @@
 ---
 template: BlogPost
 path: /hello-world
-date: 2021-05-03
+date: 2023-01-01
 title: 'Hello, World'
 category: general
 published: true
 metaDescription: >-
   Come può intitolarsi il primo post di un blog su argomenti legati al mondo
-  della finanza e del machine learning? In tanti modi in realtà, ma...beh, ho scelto questo.
+  del machine learning? In tanti modi in realtà, ma...beh, ho scelto questo.
 thumbnail: /assets/hello-world.jpg
 ---
 
@@ -15,7 +15,7 @@ thumbnail: /assets/hello-world.jpg
 
 # Hello, World
 
-Mi sono più volte chiesto come scrivere il primo di quelli che, spero, saranno una lunga serie di post. La risposta mi è sopraggiunta una notte d'inverno, mentre viaggiavo.
+Mi sono più volte chiesto come scrivere il primo post di un blog. La risposta mi è sopraggiunta una notte d'inverno, mentre viaggiavo.
 
 ```py
 import random
@@ -46,4 +46,4 @@ if __name__ == '__main__':
 
 Problema risolto, dunque? Beh...sì.
 
-Sotto con i post, allora.
+Benvenuti.

@@ -10,9 +10,15 @@ const courses = [
 		url: "https://informatica.angelocardellicchio.it",
 		imgUrl: "/assets/informatica.jpg",
     imgCredits: "https://unsplash.com/photos/cYyqhdbJ9TI?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink",
-		title: "Corso di Informatica",
-		location: "Dipartimento di Matematica",
-    datetime: "A.A. 2020/2021"
+		title: "Algoritmi e Linguaggi di Programmazione Python/C",
+    description: "Corso tenuto per il CdLM in Innovazione Digitale e Comunicazione dell'Università degli Studi di Foggia."
+	},
+	{
+		url: "https://python.angelocardellicchio.it",
+		imgUrl: "/assets/python.png",
+    imgCredits: "https://unsplash.com/photos/cYyqhdbJ9TI?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink",
+		title: "Python per il Calcolo Scientifico",
+    description: "Corso di competenze trasversali tenuto per il CdL in Matematica dell'Università degli Studi di Bari."
 	}
 ]
 
@@ -33,11 +39,11 @@ const About = () => {
   return (
     <Layout>
       <Helmet>
-        <title>Didattica — {data.site.siteMetadata.title}</title>
+        <title>Teaching — {data.site.siteMetadata.title}</title>
       </Helmet>
       <div style={{textAlign: "center", padding:"5vh 0", lineHeight: "1.5", fontSize: 18}}>
         <h1>
-          Didattica
+          Teaching
         </h1>
         <div className="grids">
           {
@@ -47,8 +53,7 @@ const About = () => {
                 imgUrl={course.imgUrl}
                 imgCredits={course.imgCredits}
                 title={course.title}
-                location={course.location}
-                datetime={course.datetime}
+                description={course.description}
               />
             })
           }
