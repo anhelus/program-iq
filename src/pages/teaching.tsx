@@ -10,21 +10,15 @@ const courses = [
 		url: "https://informatica.angelocardellicchio.it",
 		imgUrl: "/assets/informatica.jpg",
     imgCredits: "https://unsplash.com/photos/cYyqhdbJ9TI?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink",
-<<<<<<< Updated upstream
-		title: "Computer Science (Italian)",
-=======
-		title: "Algoritmi e Linguaggi di Programmazione",
-		location: "Università degli Studi di Foggia - DEMET",
-    datetime: "A.A. 2022/2023"
+		title: "Algoritmi e Linguaggi di Programmazione Python/C",
+    description: "Corso tenuto per il CdLM in Innovazione Digitale e Comunicazione dell'Università degli Studi di Foggia."
 	},
 	{
 		url: "https://python.angelocardellicchio.it",
 		imgUrl: "/assets/python.png",
     imgCredits: "https://unsplash.com/photos/cYyqhdbJ9TI?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink",
 		title: "Python per il Calcolo Scientifico",
-		location: "Università degli Studi di Bari - Dipartimento di Matematica",
-    datetime: "A.A. 2021/2022"
->>>>>>> Stashed changes
+    description: "Corso di competenze trasversali tenuto per il CdL in Matematica dell'Università degli Studi di Bari."
 	}
 ]
 
@@ -59,8 +53,7 @@ const About = () => {
                 imgUrl={course.imgUrl}
                 imgCredits={course.imgCredits}
                 title={course.title}
-                // location={course.location}
-                // datetime={course.datetime}
+                description={course.description}
               />
             })
           }
