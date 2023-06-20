@@ -1,13 +1,13 @@
 ---
 template: BlogPost
 path: /anomaly-detection
-date: 2023-01-01
-title: 'Hello, World'
+date: 2023-06-21
+title: 'Algoritmi di anomaly detection: le isolation forest'
 category: general
 published: true
 metaDescription: >-
-  Come può intitolarsi il primo post di un blog su argomenti legati al mondo
-  del machine learning? In tanti modi in realtà, ma...beh, ho scelto questo.
+  Introduciamo il problema dell'anomaly detection parlando di uno tra gli 
+  algoritmi più semplici ma più efficaci: le isolation forests.
 thumbnail: /assets/hello-world.jpg
 ---
 
@@ -55,9 +55,45 @@ Così come le random forest, le isolation forest sono costruite usando degli alb
 
 Ricordando che gli alberi decisionali sono costruiti usando dei criteri informativi come il Gini index o l'entropia. I gruppi ovviamente differenti sono separati alla radice dell'albero e più in profondità nei branch, mentre le distinzioni più sottili vengono identificate. Sulla base delle caratteristiche selezionate casualmnte, una isolation forest elabora i dati sottocampionati casualmente in una struttura ad albero. I campioni che vanno più in profondità nell'albero e richiedono più tagli per essere separati hanno poca probabilità di essere anomali. Allo stesso modo, i campioni che sono individuati sui rami più corti dell'alebro sono più probabilmente delle anomalie, dal momento che l'albero è stato in grado di distinguerli più facilmente dagli altri.
 
-https://pyimagesearch.com/2020/01/20/intro-to-anomaly-detection-with-opencv-computer-vision-and-scikit-learn/
+### Come funzionano le isolation forest?
 
-https://machinelearningmastery.com/anomaly-detection-with-isolation-forest-and-kernel-density-estimation/
+Copme detto in precedenza, l'outlier detection mediante IF non è altro che un esemble di alberi decisionali binari. Ed ogni albero in una IF è chiamato Isolation Tree. L'algoritmo inizia l'addetramento dei dati generando le Isolation Tree.
+
+Vediuamo l'algoritmo completo step-by-step:
+
+1. Quando abbiamo un dataset, prendiamo un sottoinsieme casuale dei dati ed assegnamolo ad un albero binario.
+2. Iniziamo a suddividere l'albero scegliendo una feature casuale dall'insieme delle $N$ feature. Quindi, la suddivisione è fatta su una soglia casuale (un qualsiasi valore nel range dei valori minimi e massimi della feature scelta).
+3. Se il valore di un campione è inferireo della soglia scelta, va nel ramo di sinistra, altrimenti alla destra. E quindi un nodo è suddiviso nei rami sinistro e destro.
+4. Il procediimento dallo step 2 viene ripetuto ricorsivamente fino a che ogni campione è completamente isoltao, o fino a che una profondità massima viene raggiunto.
+5. I passi precedenti sono ripetuti per costruire degli alberi binari casuali.
+
+Dopo che viene creato un ensemble di isolation tree, l'addestramento è completo. Durante lo scoring, un punto dati viene fornito all'ensemble che abbiamo addestrato in precedenza. Adesso, assegnamo un *anomaly score* ad ognuno dei punti sulla base della profondità dell'albeor richiesto per arrivare a quel punto. Quewsto punteggio è un insieme della profondità ottenuta da ciascuno degli isolation tree. Un punteggio di -1 è assegnato alle anomalie, ed 1 ai punti normali, sulla base del parametro *contamination* (percentuale delle anomalie presenti nei dati) fornito.
+
+#### Limiti
+
+Le isolation forest sono computazionalmente efficienti e si sono dimostrate molto efficaci nell'anomaly detection. Nonostante i vantaggi, ci sono alcuni limiti da considerare.
+
+1. L'anomaly score finale dipende dal parametro di contaminazione fornito durante l'addestramento del modello. Questo implica che dobbiamo avere un'idea della percentuale dei dati anomali prima dell'analisi per migliorare la nostra predizione.
+2. Inoltre, il modello sforre di un bias legato al modo in cui sono suddivisi i nodi.
+
+Per meglio capire il secondo caso, vediamo il seguente caso.
+
+TODO IMMAGINE IEEE
+
+Qui, nella score map a destra, possiamo vedere che i punti nel centro hanno l'anomaly score più basso, come possiamo attenderci. tuttavia, possiamov edere quattro regioni retangolari attorno al cerchio con un anomaly score basso anche loro. Per cui quando un nuovo data point va a finire in uno qualsiasi di queste regioni rettangolarri potrebbe non essere contrassegnato come anomalia.
+
+ALTRA IMAMGINE
+
+In modo simile, possiamo vedere nell'immagine precedente che se abbiamo due blob di dati, l'anomaly score map ha due blob ulteriori (in alto a destra ed in basso a sinistrA9 che ) che non esistono nei dati.
+
+Quando un nodo in un iTree è suddiviso basato su un valore di soglia, i dati sono suddivisi in rami a sinistra e destra il che risutla in tagli orizzontali e verticali. E qeusti tragli risultano nel bias sul modello.
+
+
+
+NELLA FIGURA precedente vediamo i cut dei rami dopo aver combinato gli output di tutti i rami di una IF. Qui possiamo vedere come le regioni rettangolari con anomaly score più bassi sono state formate nella figura a sinsitra. Inoltre, nella figura a destra vediamo la formazione di due blob aggiuntigi causati da altri tagli di rami.
+
+Per andare oltre questi limiti, un'estensione delle isolation forest chiamata Extended Isolation Forests è stata introdotta https://github.com/sahandha , dove i talgi orizzontali e verticali sono rimpiazzati da tagli con delle inclinazioni casuali.
+
 
 ## Kernel density estimation
 

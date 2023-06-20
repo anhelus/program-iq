@@ -1,3 +1,16 @@
+---
+template: BlogPost
+path: /hello-world
+date: 2023-01-01
+title: 'Hello, World'
+category: general
+published: true
+metaDescription: >-
+  Come può intitolarsi il primo post di un blog su argomenti legati al mondo
+  del machine learning? In tanti modi in realtà, ma...beh, ho scelto questo.
+thumbnail: /assets/hello-world.jpg
+---
+
 ## attention
 
 L'attention è un concetto ampiamente studiato assueme ad arousal, alertness ed engagement.
