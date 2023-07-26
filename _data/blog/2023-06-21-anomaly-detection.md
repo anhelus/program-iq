@@ -11,15 +11,15 @@ metaDescription: >-
 thumbnail: /assets/hello-world.jpg
 ---
 
-## Cosa è l'anomaly detection?
+# Cosa è un'anomalia?
 
-Un'anomalia è semplicemnte un campione che devia considerevolmente dal resto dei campioni in un certo dataset. In modo simile, l'anomaly detection è il procedimento che ci aiuta ad identificare gli outlier nei dati, in pratica punti che deviano considerevolmetne dagli altri.
+Una *anomalia* è un campione del nostro dataset che devia considerevolmente dagli altri. Di conseguenza, l'*anomaly detection* è l'insieme di tecniche che ci aiuta ad identificare le anomalie presenti nel nostro insieme dei dati. In pratica, stiamo parlando di campioni che differiscono (più o meno notevolmente) dal restante insieme dei dati.
 
-Esempi di anomalie includono:
+Alcuni esempi di anomalie sono:
 
-* picchi e valli notevoli nel mercato azionario legati ad eventi modiali anomali, come la pandemia
-* oggetti difettosi in una catena di propduzione
-* campioni contaminati in un laboratorio
+* i picchi (o le valli) che si possono rilevare nel mercato azionario a seguito di un evento anomalo, come ad esempio la pandemia;
+* la presenza di un manufatto difettoso in una catena di produzione;
+* dei campioni contaminati in un laboratorio.
 
 Nel caso di grossi dataset, possiamo avere dei pattern molto complessi che non possono essere identificati semplicemente guarndando ai dati. Quindi, per implementeare il machine learning in applicazioni reali, lo studio dell'anomaly detection è molto significativo.
 
@@ -78,24 +78,21 @@ Le isolation forest sono computazionalmente efficienti e si sono dimostrate molt
 
 Per meglio capire il secondo caso, vediamo il seguente caso.
 
-TODO IMMAGINE IEEE
+<!-- [!one_clusters](../../static/assets/2023_06_21/one_cluster.png) -->
+[!one_clusters](/assets/2023_06_21/one_cluster.png)
 
 Qui, nella score map a destra, possiamo vedere che i punti nel centro hanno l'anomaly score più basso, come possiamo attenderci. tuttavia, possiamov edere quattro regioni retangolari attorno al cerchio con un anomaly score basso anche loro. Per cui quando un nuovo data point va a finire in uno qualsiasi di queste regioni rettangolarri potrebbe non essere contrassegnato come anomalia.
 
-ALTRA IMAMGINE
+[!one_clusters_if](/assets/2023_06_21/one_cluster_if.png)
 
 In modo simile, possiamo vedere nell'immagine precedente che se abbiamo due blob di dati, l'anomaly score map ha due blob ulteriori (in alto a destra ed in basso a sinistrA9 che ) che non esistono nei dati.
 
+[!two_clusters](/assets/2023_06_21/two_clusters.png)
+
 Quando un nodo in un iTree è suddiviso basato su un valore di soglia, i dati sono suddivisi in rami a sinistra e destra il che risutla in tagli orizzontali e verticali. E qeusti tragli risultano nel bias sul modello.
 
-
+[!two_clusters_if](/assets/2023_06_21/two_clusters_if.png)
 
 NELLA FIGURA precedente vediamo i cut dei rami dopo aver combinato gli output di tutti i rami di una IF. Qui possiamo vedere come le regioni rettangolari con anomaly score più bassi sono state formate nella figura a sinsitra. Inoltre, nella figura a destra vediamo la formazione di due blob aggiuntigi causati da altri tagli di rami.
 
 Per andare oltre questi limiti, un'estensione delle isolation forest chiamata Extended Isolation Forests è stata introdotta https://github.com/sahandha , dove i talgi orizzontali e verticali sono rimpiazzati da tagli con delle inclinazioni casuali.
-
-
-## Kernel density estimation
-
-https://machinelearningmastery.com/anomaly-detection-with-isolation-forest-and-kernel-density-estimation/
-
